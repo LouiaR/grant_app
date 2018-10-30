@@ -87,7 +87,7 @@ class Search extends Component {
             showForm = (
               <div className="card card-body mb-4 p-4">
                 <h1 className="display-4 text-center">
-                  <i className="fas" /> Search A Grant
+                  <i className="fas" /> Search Grants
                 </h1>
                 <p className="lead text-center">
                   Get project funded by Comic Relief{" "}
