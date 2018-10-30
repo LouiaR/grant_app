@@ -14,7 +14,6 @@ class GrantPage extends Component {
     try {
       const response = await axios.get(`${url}/${this.props.match.params.id}`);
       const { data } = response.data;
-      console.log(data);
       this.setState({
         grant: data
       });
