@@ -10,9 +10,7 @@ class Grants extends Component {
       <Consumer>
         {value => {
           const { grants_list, title} = value;
-          console.log(value)
           if (grants_list === undefined && title === 'Search Results') {
-            console.log('invalid')
           } else if (grants_list === undefined ) {
             return <Spinner />;
           }else {

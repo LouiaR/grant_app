@@ -5,7 +5,6 @@ import { Consumer } from "../../context";
 class Search extends Component {
   state = {
     postcode: "",
-    ranges: 10,
     error: ""
   };
 
@@ -19,7 +18,8 @@ class Search extends Component {
       });
     } catch (err) {
       this.setState({
-        error: "Invalid Postcode"
+        error: "Invalid Postcode",
+        postcode: ''
       });
     }
   };
@@ -33,7 +33,6 @@ class Search extends Component {
       const response = await axios.get(
         `${url}latitude=${latitude}&longitude=${longitude}&range=10km`
       );
-      console.log(response.data);
       if (response.data.status !== "errored") {
         dispatch({
           type: "POSTCODE_SEARCH",
@@ -42,10 +41,12 @@ class Search extends Component {
         this.setState({
           postcode: ""
         });
-      } else {
-        console.log(this.state.error);
-      }
-    } catch (err) {}
+      } 
+    } catch (err) {
+      this.setState({
+        error: "An error has occured try again"
+      });
+    }
   };
 
   onChange = e => {
@@ -57,6 +58,7 @@ class Search extends Component {
       <Consumer>
         {value => {
           const { dispatch } = value;
+          const { error, postcode } = this.state;
           return (
             <div className="card card-body mb-4 p-4">
               <h1 className="display-4 text-center">
@@ -75,14 +77,7 @@ class Search extends Component {
                     value={this.state.postcode}
                     onChange={this.onChange}
                   />
-                  <input
-                    type="range"
-                    name="slide"
-                    max={100}
-                    min={0}
-                    value={this.state.ranges}
-                    onChange={this.onChange}
-                  />
+                  {(error && postcode.length === 0 )&& <span className="help-block text-danger">{error}</span>}
                 </div>
                 <button
                   className="btn btn-primary btn-lg btn-block mb-5"
