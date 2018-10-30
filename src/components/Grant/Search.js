@@ -5,24 +5,47 @@ import { Consumer } from "../../context";
 class Search extends Component {
   state = {
     postcode: "",
-    ranges: 10
+    ranges: 10,
+    error: ''
+  };
+
+  convertPostcode = async postcode => {
+    const url = process.env.REACT_APP_POSTCODE;
+    try {
+      const response = await axios.get(`${url}${postcode}`);
+      this.setState({
+        postcode: response.data,
+        error: ''
+      });
+    } catch (err) {
+      this.setState({
+        error: 'Invalid Postcode'
+      })
+    }
   };
 
   findGrant = async (dispatch, e) => {
     e.preventDefault();
-    console.log('yep')
+    const url = process.env.REACT_APP_GRANT_GE0; 
+    console.log(url)
+    await this.convertPostcode(this.state.postcode);
     try {
-      const response = await axios.get(process.env.REACT_APP_URL);
+    const { error } = this.state;
+      const response = await axios.get(`${url}latitude=51.515861&longitude=-0.1318827&range=10km`);
+      if(error.length > 1) {
+        console.log('invalid')
+      }
       dispatch({
         type: "POSTCODE_SEARCH",
         payload: response.data
-      })
+      });
       this.setState({
-        grants_list: response.data
-      })
+        grants_list: response.data,
+        postcode: ''
+      });
     } catch (err) {
-      console.log(err)
-    } 
+      console.log(this.state.error);
+    }
   };
 
   onChange = e => {
@@ -30,8 +53,6 @@ class Search extends Component {
   };
 
   render() {
-    console.log(this.state.ranges);
-
     return (
       <Consumer>
         {value => {
