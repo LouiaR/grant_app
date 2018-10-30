@@ -12,13 +12,18 @@ class Search extends Component {
     const url = process.env.REACT_APP_POSTCODE;
     try {
       const response = await axios.get(`${url}${postcode}`);
+      const { latitude, longitude } = response.data.result;
       this.setState({
-        postcode: response.data.result,
+        postcode: {
+          latitude,
+          longitude
+        },
         error: ""
       });
     } catch (err) {
+      // Case where postcode is invalid
       this.setState({
-        error: "Invalid Postcode",
+        error: "Please enter a valid postcode, example NW1 2DB",
         postcode: ""
       });
     }
@@ -26,26 +31,36 @@ class Search extends Component {
 
   findGrant = async (dispatch, e) => {
     e.preventDefault();
-    const url = process.env.REACT_APP_GRANT_GE0;
-    await this.convertPostcode(this.state.postcode);
-    try {
+    const { postcode } = this.state;
+    if (postcode.length === 0) {
+      // Handle empty input
+      this.setState({
+        error: "Please enter a postcode"
+      });
+    } else {
+      // Handle case where input is provided
+      const url = process.env.REACT_APP_GRANT_GE0;
+      await this.convertPostcode(postcode);
       const { latitude, longitude } = this.state.postcode;
-      const response = await axios.get(
-        `${url}latitude=${latitude}&longitude=${longitude}&range=10km`
-      );
-      if (response.data.status !== "errored") {
-        dispatch({
-          type: "POSTCODE_SEARCH",
-          payload: response.data.data.grants
-        });
+      try {
+        const response = await axios.get(
+          `${url}latitude=${latitude}&longitude=${longitude}&range=10km`
+        );
+        if (response.data.status !== "errored") {
+          // Case where postcode is valid
+          this.setState({
+            postcode: ""
+          });
+          dispatch({
+            type: "POSTCODE_SEARCH",
+            payload: response.data.data.grants
+          });
+        }
+      } catch (err) {
         this.setState({
-          postcode: ""
+          error: "An error has occured try again"
         });
       }
-    } catch (err) {
-      this.setState({
-        error: "An error has occured try again"
-      });
     }
   };
 

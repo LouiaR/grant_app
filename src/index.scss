@@ -19,6 +19,10 @@ body {
   overflow-x: hidden;
 }
 
+input[type="text"] {
+  text-transform: uppercase;
+}
+
 .App {
   height: 100vh;
   display: grid;
@@ -87,6 +91,10 @@ body {
         text-overflow: ellipsis;
         max-width: 75ch;
       }
+
+      .help-block {
+        margin-top: 10px;
+      }
     }
 
     footer {
@@ -105,6 +113,18 @@ body {
 
     main.container{
       padding: 0 .4rem;
+      .lead {
+        font-size: 1rem;
+      }
+      
+      .display-4 {
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+
+      h3.text-center {
+        font-size: 1rem;
+      }
     }
   }
 }
