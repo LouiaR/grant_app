@@ -6,7 +6,7 @@ class Search extends Component {
   state = {
     postcode: "",
     ranges: 10,
-    error: ''
+    error: ""
   };
 
   convertPostcode = async postcode => {
@@ -15,33 +15,37 @@ class Search extends Component {
       const response = await axios.get(`${url}${postcode}`);
       this.setState({
         postcode: response.data.result,
-        error: ''
+        error: ""
       });
     } catch (err) {
       this.setState({
-        error: 'Invalid Postcode'
-      })
+        error: "Invalid Postcode"
+      });
     }
   };
 
   findGrant = async (dispatch, e) => {
     e.preventDefault();
-    const url = process.env.REACT_APP_GRANT_GE0; 
+    const url = process.env.REACT_APP_GRANT_GE0;
     await this.convertPostcode(this.state.postcode);
     try {
-      const {latitude, longitude } = this.state.postcode;
-      const response = await axios.get(`${url}latitude=${latitude}&longitude=${longitude}&range=10km`);
-      dispatch({
-        type: "POSTCODE_SEARCH",
-        payload: response.data
-      });
-      this.setState({
-        grants_list: response.data,
-        postcode: ''
-      });
-    } catch (err) {
-
-    }
+      const { latitude, longitude } = this.state.postcode;
+      const response = await axios.get(
+        `${url}latitude=${latitude}&longitude=${longitude}&range=10km`
+      );
+      console.log(response.data);
+      if (response.data.status !== "errored") {
+        dispatch({
+          type: "POSTCODE_SEARCH",
+          payload: response.data.data.grants
+        });
+        this.setState({
+          postcode: ""
+        });
+      } else {
+        console.log(this.state.error);
+      }
+    } catch (err) {}
   };
 
   onChange = e => {

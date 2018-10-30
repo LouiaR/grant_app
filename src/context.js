@@ -26,8 +26,9 @@ export class Provider extends Component {
   async componentDidMount() {
     try {
       const response = await axios.get(process.env.REACT_APP_URL);
+      const {grants } = (response.data.data);
       this.setState({
-        grants_list: response.data
+        grants_list: grants.slice(grants.length - 10)
       })
     } catch (err) {
       console.log(err)

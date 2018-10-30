@@ -11,17 +11,17 @@ class Grants extends Component {
         {value => {
           const { grants_list, title} = value;
           console.log(value)
-          const { data, status } = grants_list;
-          if (status !== 'success') {
+          if (grants_list === undefined && title === 'Search Results') {
+            console.log('invalid')
+          } else if (grants_list === undefined ) {
             return <Spinner />;
-          } else {
-            const grants = data.grants.slice(data.grants.length - 10); // Last ten grants
+          }else {
             return (
               <Aux>
                 <Search />
                 <h3 className="text-center mb-4">{title}</h3>
                 <div className="row">
-                  {grants.map(item => (
+                  {grants_list.map(item => (
                     <Grant
                       grant={item.data}
                       key={item.data.grants_project_id}
