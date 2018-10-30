@@ -1,44 +1,46 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Comic Relief Grant app
 
-## Available Scripts
+> This App allow user to find grant which head offices are within 10km of their postcode using React,  Comic Relief API and  the    [https://postcodes.io/docs](https://postcodes.io/docs) API.
 
-In the project directory, you can run:
 
-### `npm start`
+## Quick Start
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+# Install dependencies
+npm install or yarn
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+# Serve on localhost:3000
+npm start or yarn start
 
-### `npm test`
+# Build for production
+npm run build
+```
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Features
+With the time given, I have chosen a combination of features, decided on how
+the structure of the application should look like and focus on the functionalities of the app. I then followed agile development approach to develop the application.
 
-### `npm run build`
+With this application, users can:
+- Can view 10 grants  by default when the app load
+- Can search for grant which head offices are 10km away from his postcode
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Main frameworks and libraries
+- Frontend: HTML, CSS, ES6, JavaScript, React, Bootsrap
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Future improvements
+I'd like to keep expanding this project to hone my existing skills, as well as
+to explore new technologies.
+Improve UI for better user experience
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Application architecture
+The user must provide a valid postcode in the input field provided and click get grant button. This postcode is convert to latitude and longititude, which is used to query all the grants which have head office available within 10km of the user postcode.
 
-### `npm run eject`
+### Author
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Louis
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### License
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project is licensed under the MIT License
