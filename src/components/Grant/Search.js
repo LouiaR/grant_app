@@ -14,7 +14,7 @@ class Search extends Component {
     try {
       const response = await axios.get(`${url}${postcode}`);
       this.setState({
-        postcode: response.data,
+        postcode: response.data.result,
         error: ''
       });
     } catch (err) {
@@ -27,14 +27,10 @@ class Search extends Component {
   findGrant = async (dispatch, e) => {
     e.preventDefault();
     const url = process.env.REACT_APP_GRANT_GE0; 
-    console.log(url)
     await this.convertPostcode(this.state.postcode);
     try {
-    const { error } = this.state;
-      const response = await axios.get(`${url}latitude=51.515861&longitude=-0.1318827&range=10km`);
-      if(error.length > 1) {
-        console.log('invalid')
-      }
+      const {latitude, longitude } = this.state.postcode;
+      const response = await axios.get(`${url}latitude=${latitude}&longitude=${longitude}&range=10km`);
       dispatch({
         type: "POSTCODE_SEARCH",
         payload: response.data
@@ -44,7 +40,7 @@ class Search extends Component {
         postcode: ''
       });
     } catch (err) {
-      console.log(this.state.error);
+
     }
   };
 

@@ -10,8 +10,9 @@ class Grants extends Component {
       <Consumer>
         {value => {
           const { grants_list, title} = value;
-          const { data } = grants_list;
-          if (data === undefined || data.grants.length === 0) {
+          console.log(value)
+          const { data, status } = grants_list;
+          if (status !== 'success') {
             return <Spinner />;
           } else {
             const grants = data.grants.slice(data.grants.length - 10); // Last ten grants
