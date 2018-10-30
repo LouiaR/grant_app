@@ -8,7 +8,7 @@ const layout = props => {
       <Header />
       <main>
         <h1>Promo</h1>
-        <div>{props.children}</div>
+        <div className="container">{props.children}</div>
       </main>
       <footer>Footer</footer>
     </Aux>

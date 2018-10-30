@@ -5,7 +5,8 @@ const Context = React.createContext();
 
 export class Provider extends Component {
     state = {
-        grants_list: []
+        grants_list: [],
+        title: 'Some projects funded by Comic Relief'
     }
     
   async componentDidMount() {

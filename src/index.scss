@@ -16,6 +16,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 .App {
@@ -50,6 +51,19 @@ body {
     
     main {
       grid-area: m;
+
+      .container {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 5rem;
+      }
+
+      .summary {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 75ch;
+      }
     }
 
     footer {
