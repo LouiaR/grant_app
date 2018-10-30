@@ -100,8 +100,11 @@ body {
     .jumbotron {
       .lead {
       width: 80%;
+      }
     }
-    
+
+    main.container{
+      padding: 0 .4rem;
     }
   }
 }

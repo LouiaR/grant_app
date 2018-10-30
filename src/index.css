@@ -81,4 +81,6 @@ body {
 
 @media (max-width: 750px) {
   .App .jumbotron .lead {
-    width: 80%; } }
+    width: 80%; }
+  .App main.container {
+    padding: 0 .4rem; } }
