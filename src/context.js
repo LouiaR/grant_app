@@ -1,47 +1,47 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 
 const Context = React.createContext();
 
 const reducer = (state, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case "POSTCODE_SEARCH":
       return {
         ...state,
         grants_list: action.payload,
-        title: 'Search Results'
-      }
+        title: "Search Results"
+      };
     default:
-      return state;  
+      return state;
   }
-}
+};
 
 export class Provider extends Component {
-    state = {
-        grants_list: [],
-        title: 'Some projects funded by Comic Relief',
-        dispatch: action => this.setState(state => reducer(state, action))
-    }
-    
+  state = {
+    grants_list: [],
+    title: "Some projects funded by Comic Relief",
+    dispatch: action => this.setState(state => reducer(state, action))
+  };
+
   async componentDidMount() {
     try {
       const response = await axios.get(process.env.REACT_APP_URL);
-      const {grants } = (response.data.data);
+      const { grants } = response.data.data;
       this.setState({
         grants_list: grants.slice(grants.length - 10)
-      })
+      });
     } catch (err) {
-      console.log(err)
-    } 
-  } 
+      console.log(err);
+    }
+  }
 
   render() {
     return (
       <Context.Provider value={this.state}>
         {this.props.children}
       </Context.Provider>
-    )
-  }  
+    );
+  }
 }
 
 export const Consumer = Context.Consumer;

@@ -6,11 +6,8 @@ const layout = props => {
   return (
     <Aux>
       <Header />
-      <main className="container">
-        <h1>Promo</h1>
-        {props.children}
-      </main>
-      <footer>Footer</footer>
+      <main className="container">{props.children}</main>
+      <footer>© Louis</footer>
     </Aux>
   );
 };

@@ -19,7 +19,7 @@ class Search extends Component {
     } catch (err) {
       this.setState({
         error: "Invalid Postcode",
-        postcode: ''
+        postcode: ""
       });
     }
   };
@@ -41,7 +41,7 @@ class Search extends Component {
         this.setState({
           postcode: ""
         });
-      } 
+      }
     } catch (err) {
       this.setState({
         error: "An error has occured try again"
@@ -77,7 +77,10 @@ class Search extends Component {
                     value={this.state.postcode}
                     onChange={this.onChange}
                   />
-                  {(error && postcode.length === 0 )&& <span className="help-block text-danger">{error}</span>}
+                  {error &&
+                    postcode.length === 0 && (
+                      <span className="help-block text-danger">{error}</span>
+                    )}
                 </div>
                 <button
                   className="btn btn-primary btn-lg btn-block mb-5"

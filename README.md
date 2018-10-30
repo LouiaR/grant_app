@@ -25,7 +25,7 @@ With this application, users can:
 - Can search for grant which head offices are 10km away from his postcode
 
 ### Main frameworks and libraries
-- Frontend: HTML, CSS, ES6, JavaScript, React, Bootsrap
+- Frontend: HTML, CSS, ES6, JavaScript, React, Bootsrap, context API
 
 ### Future improvements
 I'd like to keep expanding this project to hone my existing skills, as well as
