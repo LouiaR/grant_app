@@ -25,6 +25,10 @@ body {
 .App header {
   grid-area: t; }
 
+.App header .navbar-brand {
+  width: 4.5rem;
+  text-align: center; }
+
 .App .jumbotron {
   grid-area: j;
   background: url(./assets/images/promo.jpg);
@@ -51,8 +55,7 @@ body {
 .App .container-fluid .brand {
   background: var(--main-color);
   color: #fff;
-  display: block;
-  border-radius: 5px; }
+  display: block; }
 
 .App .container-fluid .brand div {
   padding: 0 5px;
