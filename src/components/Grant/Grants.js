@@ -3,6 +3,7 @@ import { Consumer } from "../../context";
 import Grant from "./Grant";
 import Spinner from "../Layout/Spinner";
 import Aux from "../../hoc/aux";
+import Search from './Search';
 class Grants extends Component {
   render() {
     return (
@@ -16,6 +17,7 @@ class Grants extends Component {
             const grants = data.grants.slice(data.grants.length - 10); // Last ten grants
             return (
               <Aux>
+                <Search />
                 <h3 className="text-center mb-4">{title}</h3>
                 <div className="row">
                   {grants.map(item => (

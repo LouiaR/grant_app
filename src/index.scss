@@ -49,15 +49,14 @@ body {
       }
     }  
     
+    main.container {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0 5rem;
+    }
+
     main {
       grid-area: m;
-
-      .container {
-        max-width: 100%;
-        margin: 0 auto;
-        padding: 0 5rem;
-      }
-
       .summary {
         white-space: nowrap;
         overflow: hidden;
