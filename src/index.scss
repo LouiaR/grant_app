@@ -22,16 +22,37 @@ body {
 .App {
   height: 100vh;
   display: grid;
-  grid-gap: .5rem;
+  grid-gap: .8rem;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 100px auto 100px;
+  grid-template-rows: 10vh 60vh auto 5vh;
   grid-template-areas: 
     "t t t t t t t t t t t t"
+    "j j j j j j j j j j j j"
     "m m m m m m m m m m m m"
     "f f f f f f f f f f f f";
 
     header {
       grid-area: t;
+    }
+
+    .jumbotron {
+      grid-area: j;
+      background: url(./assets/images/promo.jpg);
+      color: #fff;
+      border-radius: 0;
+      background-repeat:no-repeat;
+      background-size:cover;
+      background-position:center;
+      padding: 4rem 0;
+      .lead {
+        width: 40%;
+        padding-left: 1rem
+      }
+      .display-4 {
+        font-size: 4rem;
+        font-weight: 700;
+        padding-left: 1rem
+      }
     }
 
     .container-fluid {
