@@ -9,7 +9,8 @@ const Grant = props => {
     country_name,
     amount_awarded,
     copywritten_summary,
-    grants_project_id
+    grants_project_id,
+    region
   } = props.grant;
   return (
     <div className="col-md-6">
@@ -18,7 +19,7 @@ const Grant = props => {
           <h2>{name.replace("\\u0027", "'")}</h2>
           <p>
             <span>{start_date}</span> | <span>{country_name}</span> |{" "}
-            <span>£{amount_awarded}</span>
+            <span>£{amount_awarded}</span> | <span>{region}</span>
           </p>
         </div>
         <div className="card-body ">

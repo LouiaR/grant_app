@@ -29,7 +29,8 @@ class GrantPage extends Component {
       start_date,
       country_name,
       amount_awarded,
-      copywritten_summary
+      copywritten_summary,
+      region
     } = this.state.grant;
     if (this.state.grant.length === 0) {
       return <Spinner />;
@@ -45,7 +46,7 @@ class GrantPage extends Component {
                 <h2>{name.replace("\\u0027", "'")}</h2>
                 <p>
                   <span>{start_date}</span> | <span>{country_name}</span> |{" "}
-                  <span>£{amount_awarded}</span>
+                  <span>£{amount_awarded}</span> | <span>{region}</span>
                 </p>
               </div>
               <div className="card-body ">
