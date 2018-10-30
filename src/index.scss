@@ -1,0 +1,60 @@
+:root {
+  --main-color: #ea0043;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  height: 100vh;
+  display: grid;
+  grid-gap: .5rem;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 100px auto 100px;
+  grid-template-areas: 
+    "t t t t t t t t t t t t"
+    "m m m m m m m m m m m m"
+    "f f f f f f f f f f f f";
+
+    header {
+      grid-area: t;
+    }
+
+    .container-fluid {
+      padding: 0;
+      display: grid;
+      .brand {
+        background: var(--main-color);
+        color: #fff;
+        display: block;
+        border-radius: 5px;
+        div {
+          padding: 0 5px;
+          font-size: 16px;
+        }
+      }
+    }  
+    
+    main {
+      grid-area: m;
+    }
+
+    footer {
+      grid-area: f;
+    }
+
+
+}

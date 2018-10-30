@@ -1,10 +1,10 @@
 import React from "react";
 const header = () => {
   return (
-    <header>
-      <nav className="navbar navbar-light bg-light">
+    <header className="container-fluid">
+      <nav className="navbar navbar-light">
         <a className="navbar-brand" href="/">
-          <span>Comic Relief Grants</span>
+          <span className="brand"><div>Comic</div><div>Relief</div> <div>Grants</div></span>
         </a> 
       </nav>
     </header>
