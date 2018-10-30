@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Consumer } from "../../context";
-import Spinner from "../Layout/Spinner";
 
 class Search extends Component {
   state = {
     postcode: "",
+    lat: "",
+    long: "",
     error: "",
     isloading: false
   };
@@ -16,11 +17,10 @@ class Search extends Component {
       const response = await axios.get(`${url}${postcode}`);
       const { latitude, longitude } = response.data.result;
       this.setState({
-        postcode: {
-          latitude,
-          longitude
-        },
+        postcode: "",
         error: "",
+        lat: latitude,
+        long: longitude,
         isloading: true
       });
     } catch (err) {
@@ -39,19 +39,18 @@ class Search extends Component {
     if (postcode.length === 0) {
       // Handle empty input
       this.setState({
-        error: "Please enter a postcode"
+        error: "Please enter a postcode, example NW1 2DB"
       });
     } else {
       // Handle case where input is provided
       const url = process.env.REACT_APP_GRANT_GE0;
       await this.convertPostcode(postcode);
-      const { latitude, longitude } = this.state.postcode;
+      const { lat, long } = this.state;
       try {
         const response = await axios.get(
-          `${url}latitude=${latitude}&longitude=${longitude}&range=10km`
+          `${url}latitude=${lat}&longitude=${long}&range=10km`
         );
         if (response.data.status !== "errored") {
-          // Case where postcode is valid
           this.setState({
             postcode: "",
             isloading: false
@@ -78,45 +77,40 @@ class Search extends Component {
       <Consumer>
         {value => {
           const { dispatch } = value;
-          const { error, postcode, isloading } = this.state;
+          const { error, postcode } = this.state;
           let showForm = null;
-          if (isloading) {
-            // Display spinner while the request is being handle
-            showForm = <Spinner />;
-          } else {
-            showForm = (
-              <div className="card card-body mb-4 p-4">
-                <h1 className="display-4 text-center">
-                  <i className="fas" /> Search Grants
-                </h1>
-                <p className="lead text-center">
-                  Get project funded by Comic Relief{" "}
-                </p>
-                <form onSubmit={this.findGrant.bind(this, dispatch)}>
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      className="form-control form-control-lg"
-                      placeholder="Enter Postcode..."
-                      name="postcode"
-                      value={this.state.postcode}
-                      onChange={this.onChange}
-                    />
-                    {error &&
-                      postcode.length === 0 && (
-                        <span className="help-block text-danger">{error}</span>
-                      )}
-                  </div>
-                  <button
-                    className="btn btn-primary btn-lg btn-block mb-5"
-                    type="submit"
-                  >
-                    Get Grants
-                  </button>
-                </form>
-              </div>
-            );
-          }
+          showForm = (
+            <div className="card card-body mb-4 p-4">
+              <h1 className="display-4 text-center">
+                <i className="fas" /> Search Grants
+              </h1>
+              <p className="lead text-center">
+                Get project funded by Comic Relief{" "}
+              </p>
+              <form onSubmit={this.findGrant.bind(this, dispatch)}>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className="form-control form-control-lg"
+                    placeholder="Enter Postcode..."
+                    name="postcode"
+                    value={this.state.postcode}
+                    onChange={this.onChange}
+                  />
+                  {error &&
+                    postcode.length === 0 && (
+                      <span className="help-block text-danger">{error}</span>
+                    )}
+                </div>
+                <button
+                  className="btn btn-primary btn-lg btn-block mb-5"
+                  type="submit"
+                >
+                  Get Grants
+                </button>
+              </form>
+            </div>
+          );
           return showForm;
         }}
       </Consumer>
