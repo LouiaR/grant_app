@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Consumer } from "../../context";
+import Spinner from "../Layout/Spinner";
 
 class Search extends Component {
   state = {
     postcode: "",
-    error: ""
+    error: "",
+    isloading: false
   };
 
   convertPostcode = async postcode => {
@@ -18,11 +20,13 @@ class Search extends Component {
           latitude,
           longitude
         },
-        error: ""
+        error: "",
+        isloading: true
       });
     } catch (err) {
       // Case where postcode is invalid
       this.setState({
+        isloading: false,
         error: "Please enter a valid postcode, example NW1 2DB",
         postcode: ""
       });
@@ -49,7 +53,8 @@ class Search extends Component {
         if (response.data.status !== "errored") {
           // Case where postcode is valid
           this.setState({
-            postcode: ""
+            postcode: "",
+            isloading: false
           });
           dispatch({
             type: "POSTCODE_SEARCH",
@@ -73,39 +78,46 @@ class Search extends Component {
       <Consumer>
         {value => {
           const { dispatch } = value;
-          const { error, postcode } = this.state;
-          return (
-            <div className="card card-body mb-4 p-4">
-              <h1 className="display-4 text-center">
-                <i className="fas" /> Search A Grant
-              </h1>
-              <p className="lead text-center">
-                Get project funded by Comic Relief{" "}
-              </p>
-              <form onSubmit={this.findGrant.bind(this, dispatch)}>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control form-control-lg"
-                    placeholder="Enter Postcode..."
-                    name="postcode"
-                    value={this.state.postcode}
-                    onChange={this.onChange}
-                  />
-                  {error &&
-                    postcode.length === 0 && (
-                      <span className="help-block text-danger">{error}</span>
-                    )}
-                </div>
-                <button
-                  className="btn btn-primary btn-lg btn-block mb-5"
-                  type="submit"
-                >
-                  Get Grants
-                </button>
-              </form>
-            </div>
-          );
+          const { error, postcode, isloading } = this.state;
+          let showForm = null;
+          if (isloading) {
+            // Display spinner while the request is being handle
+            showForm = <Spinner />;
+          } else {
+            showForm = (
+              <div className="card card-body mb-4 p-4">
+                <h1 className="display-4 text-center">
+                  <i className="fas" /> Search A Grant
+                </h1>
+                <p className="lead text-center">
+                  Get project funded by Comic Relief{" "}
+                </p>
+                <form onSubmit={this.findGrant.bind(this, dispatch)}>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      className="form-control form-control-lg"
+                      placeholder="Enter Postcode..."
+                      name="postcode"
+                      value={this.state.postcode}
+                      onChange={this.onChange}
+                    />
+                    {error &&
+                      postcode.length === 0 && (
+                        <span className="help-block text-danger">{error}</span>
+                      )}
+                  </div>
+                  <button
+                    className="btn btn-primary btn-lg btn-block mb-5"
+                    type="submit"
+                  >
+                    Get Grants
+                  </button>
+                </form>
+              </div>
+            );
+          }
+          return showForm;
         }}
       </Consumer>
     );

@@ -31,6 +31,8 @@ With this application, users can:
 I'd like to keep expanding this project to hone my existing skills, as well as
 to explore new technologies.
 Improve UI for better user experience
+Add test
+Improve accessibility by adding tag like aria...
 
 ### Application architecture
 The user must provide a valid postcode in the input field provided and click get grant button. This postcode is convert to latitude and longititude, which is used to query all the grants which have head office available within 10km of the user postcode.

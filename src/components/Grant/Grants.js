@@ -11,13 +11,12 @@ class Grants extends Component {
         {value => {
           const { grants_list, title } = value;
           let result = null;
-          if (grants_list === undefined && title === "Search Results") {
-            result = null;
-          } else if (grants_list === undefined || grants_list.length === 0) {
+          if (grants_list === undefined || grants_list.length === 0) {
             result = <Spinner />;
           } else {
             result = (
               <Aux>
+                <Search />
                 <h3 className="text-center mb-4">{title}</h3>
                 <div className="row">
                   {grants_list.map(item => (
@@ -30,13 +29,7 @@ class Grants extends Component {
               </Aux>
             );
           }
-
-          return (
-            <Aux>
-              <Search />
-              {result}
-            </Aux>
-          );
+          return <Aux>{result}</Aux>;
         }}
       </Consumer>
     );
