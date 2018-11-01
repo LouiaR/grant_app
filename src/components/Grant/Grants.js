@@ -17,7 +17,15 @@ class Grants extends Component {
             result = (
               <Aux>
                 <Search />
-                <h3 className="text-center mb-4">{title}</h3>
+                <h3 className="text-center mb-4">
+                  {title}{" "}
+                  {title === "Search Results" && (
+                    <span>
+                      We found {grants_list.length}{" "}
+                      {grants_list.length > 1 ? "results" : result}{" "}
+                    </span>
+                  )}
+                </h3>
                 <div className="row">
                   {grants_list.map(item => (
                     <Grant

@@ -93,6 +93,15 @@ input[type="text"] {
   text-overflow: ellipsis;
   max-width: 75ch; }
 
+.App main h3.text-center {
+  display: flex;
+  justify-content: center;
+  flex-flow: column; }
+
+.App main h3.text-center span {
+  font-size: 15px;
+  padding-top: 5px; }
+
 .App main .help-block {
   margin-top: 10px; }
 

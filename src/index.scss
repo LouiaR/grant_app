@@ -108,6 +108,16 @@ input[type="text"] {
         max-width: 75ch;
       }
 
+      h3.text-center {
+        display: flex;
+        justify-content: center;
+        flex-flow: column;
+        span {
+          font-size: 15px;
+          padding-top: 5px;
+        }
+      }
+
       .help-block {
         margin-top: 10px;
       }
