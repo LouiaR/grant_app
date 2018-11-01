@@ -17,6 +17,19 @@ body {
 input[type="text"] {
   text-transform: uppercase; }
 
+.grant-info {
+  display: flex; }
+  .grant-info .grant-label {
+    padding: 0 10px;
+    color: #222020; }
+  .grant-info .label {
+    color: #6c757dcf;
+    font-weight: 100; }
+
+.grant-label {
+  padding: 0 10px;
+  color: #222020; }
+
 .App {
   height: 100vh;
   display: grid;
@@ -24,76 +37,63 @@ input[type="text"] {
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 12vh 60vh auto 6vh;
   grid-template-areas: "t t t t t t t t t t t t" "j j j j j j j j j j j j" "m m m m m m m m m m m m" "f f f f f f f f f f f f"; }
-
-.App header {
-  grid-area: t; }
-
-.App header .navbar-brand {
-  width: 4.5rem;
-  text-align: center; }
-
-.App .jumbotron {
-  grid-area: j;
-  background: url(./assets/images/promo.jpg);
-  color: #fff;
-  border-radius: 0;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  padding: 4rem 0; }
-
-.App .jumbotron .lead {
-  width: 50%;
-  padding-left: 1rem; }
-
-.App .jumbotron .display-4 {
-  font-size: 4rem;
-  font-weight: 700;
-  padding-left: 1rem; }
-
-.App .container-fluid {
-  padding: 0;
-  display: grid; }
-
-.App .container-fluid .brand {
-  background: var(--main-color);
-  color: #fff;
-  display: block; }
-
-.App .container-fluid .brand div {
-  padding: 0 5px;
-  font-size: 16px; }
-
-.App main.container {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 5rem; }
-
-.App main {
-  grid-area: m; }
-
-.App main .summary {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 75ch; }
-
-.App main .help-block {
-  margin-top: 10px; }
-
-.App footer {
-  grid-area: f;
-  text-align: center; }
+  .App header {
+    grid-area: t; }
+    .App header .navbar-brand {
+      width: 4.5rem;
+      text-align: center; }
+  .App .jumbotron {
+    grid-area: j;
+    background: url(./assets/images/promo.jpg);
+    color: #fff;
+    border-radius: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 4rem 0; }
+    .App .jumbotron .lead {
+      width: 50%;
+      padding-left: 1rem; }
+    .App .jumbotron .display-4 {
+      font-size: 4rem;
+      font-weight: 700;
+      padding-left: 1rem; }
+  .App .container-fluid {
+    padding: 0;
+    display: grid; }
+    .App .container-fluid .brand {
+      background: var(--main-color);
+      color: #fff;
+      display: block; }
+      .App .container-fluid .brand div {
+        padding: 0 5px;
+        font-size: 16px; }
+  .App main.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 5rem; }
+  .App main {
+    grid-area: m; }
+    .App main .summary {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 75ch; }
+    .App main .help-block {
+      margin-top: 10px; }
+  .App footer {
+    grid-area: f;
+    text-align: center; }
 
 @media (max-width: 750px) {
   .App .jumbotron .lead {
     width: 80%; }
   .App main.container {
     padding: 0 .4rem; }
-  .App main.container .lead {
-    font-size: 1rem; }
-  .App main.container .display-4 {
-    font-size: 1.2rem;
-    font-weight: 700; }
-  .App main.container h3.text-center {
-    font-size: 1rem; } }
+    .App main.container .lead {
+      font-size: 1rem; }
+    .App main.container .display-4 {
+      font-size: 1.2rem;
+      font-weight: 700; }
+    .App main.container h3.text-center {
+      font-size: 1rem; } }

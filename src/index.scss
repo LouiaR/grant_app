@@ -23,6 +23,23 @@ input[type="text"] {
   text-transform: uppercase;
 }
 
+.grant-info {
+  display: flex;
+  .grant-label {
+    padding: 0 10px;
+    color: rgb(34, 32, 32);
+  }
+  .label {
+    color: #6c757dcf;
+    font-weight: 100;
+  }
+}
+
+.grant-label {
+  padding: 0 10px;
+  color: rgb(34, 32, 32);
+}
+
 .App {
   height: 100vh;
   display: grid;

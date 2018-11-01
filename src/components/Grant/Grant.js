@@ -17,13 +17,28 @@ const Grant = props => {
       <div className="card  mb-4">
         <div className="card-header">
           <h2>{name.replace("\\u0027", "'")}</h2>
-          <p>
-            <span>{start_date}</span> | <span>{country_name}</span> |{" "}
-            <span>£{amount_awarded}</span> | <span>{region}</span>
-          </p>
+          <div className="grant-info">
+            <span className="grant-label">
+              <div> {start_date}</div> <div className="label">start date</div>
+            </span>{" "}
+            |{" "}
+            <span className="grant-label">
+              {" "}
+              <div>{country_name}</div>{" "}
+              <div className="label">Beneficiary country</div>
+            </span>{" "}
+            |{" "}
+            <span className="grant-label">
+              <div>£{amount_awarded}</div> <div className="label">Amount</div>
+            </span>{" "}
+            |{" "}
+            <span className="grant-label">
+              <div>{region}</div> <div className="label">Office location</div>
+            </span>
+          </div>
         </div>
         <div className="card-body ">
-          <h5 className="card-title">{issue}</h5>
+          <h5 className="card-title">Issue: {issue}</h5>
           <p className="card-text summary">{copywritten_summary}</p>
         </div>
         <div className="card-footer bg-transparent ">
