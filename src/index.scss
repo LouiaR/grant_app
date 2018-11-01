@@ -51,7 +51,6 @@ input[type="text"] {
     "j j j j j j j j j j j j"
     "m m m m m m m m m m m m"
     "f f f f f f f f f f f f";
-
     header {
       grid-area: t;
       .navbar-brand {
@@ -131,7 +130,7 @@ input[type="text"] {
     .grant-info {
       flex-flow: column;
     }
-    
+
     main.container{
       padding: 0 .4rem;
       .lead {
