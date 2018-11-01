@@ -21,17 +21,17 @@ const Grant = props => {
             <span className="grant-label">
               <div> {start_date}</div> <div className="label">start date</div>
             </span>{" "}
-            |{" "}
+            {" "}
             <span className="grant-label">
               {" "}
               <div>{country_name}</div>{" "}
               <div className="label">Beneficiary country</div>
             </span>{" "}
-            |{" "}
+            {" "}
             <span className="grant-label">
               <div>£{amount_awarded}</div> <div className="label">Amount</div>
             </span>{" "}
-            |{" "}
+            {" "}
             <span className="grant-label">
               <div>{region}</div> <div className="label">Office location</div>
             </span>
